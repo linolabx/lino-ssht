@@ -1,11 +1,11 @@
-name: build sshd-lite
+name: build ssht-lite
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
     paths:
-      - sshd-lite/**
-      - .github/workflows/sshd-lite.yml
+      - ssht-lite/**
+      - .github/workflows/ssht-lite.yml
 
 jobs:
   build-image:
@@ -28,6 +28,6 @@ jobs:
         id: push
         uses: docker/build-push-action@v6
         with:
-          context: ./sshd-lite
+          context: ./ssht-lite
           push: true
-          tags: ghcr.io/${{ github.repository }}/ssht:latest,ghcr.io/${{ github.repository }}/ssht:${{ github.sha }}
+          tags: ghcr.io/${{ github.repository }}/ssht-lite:latest,ghcr.io/${{ github.repository }}/ssht-lite:${{ github.sha }}
