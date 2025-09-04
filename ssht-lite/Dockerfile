@@ -5,20 +5,6 @@ RUN <<EORUN
 
 echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
-cat <<EOF > /etc/apt/sources.list.d/debian.sources
-Types: deb
-URIs: https://mirrors.netx.ink/debian
-Suites: bookworm bookworm-updates
-Components: main
-Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
-
-Types: deb
-URIs: https://mirrors.netx.ink/debian-security
-Suites: bookworm-security
-Components: main
-Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
-EOF
-
 apt-get update
 apt-get full-upgrade -y
 apt-get install -y apt-transport-https
