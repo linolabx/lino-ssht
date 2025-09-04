@@ -1,0 +1,33 @@
+name: build sshd-lite
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - sshd-lite/**
+      - .github/workflows/sshd-lite.yml
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker image
+        id: push
+        uses: docker/build-push-action@v6
+        with:
+          context: ./sshd-lite
+          push: true
+          tags: ghcr.io/${{ github.repository }}/ssht:latest,ghcr.io/${{ github.repository }}/ssht:${{ github.sha }}
