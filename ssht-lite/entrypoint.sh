@@ -60,7 +60,7 @@ if [[ ! -f "/etc/ssh/ssh_host_rsa_key" ]]; then
     chown root:root /etc/ssh/ssh_host_*
 fi
 
-cat <<EOF >/etc/ssh/sshd_config.d/ssht.conf
+cat <<EOF >/etc/ssh/sshd_config.d/ssht-user.conf
 Match User ${SSHT_USER_NAME}
     AllowTcpForwarding yes
     X11Forwarding no
