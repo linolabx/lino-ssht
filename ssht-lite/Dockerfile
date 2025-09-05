@@ -31,6 +31,7 @@ cat <<EOF >/etc/ssh/sshd_config.d/ssht.conf
 PubkeyAuthentication yes
 PermitRootLogin no
 PasswordAuthentication yes
+Port 65522
 EOF
 
 install -m 750 -o root -g root -d /var/run/sshd

@@ -26,7 +26,7 @@ runssht() {
         -v "$PWD"/unit-test/host_keys:/etc/ssht/host_keys \
         -v "$PWD"/unit-test/ssht.pub:/ssht.pub \
         -v "$PWD"/unit-test/sshm.pub:/sshm.pub \
-        -p 3322:22 \
+        -p 3322:65522 \
         ssht
 }
 
